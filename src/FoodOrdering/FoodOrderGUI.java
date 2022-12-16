@@ -2,11 +2,19 @@ package FoodOrdering;
 
 import javax.swing.*;
 
-public class FoodOrderGUI {
+public class FoodOrderGUI extends JFrame {
     private JPanel panel1;
-    private JCheckBox cPizza, cBurger, cFries, cSoftDrinks, cTea, cSundae;;
-    private JRadioButton rbNone, rb10, rb15;
+    private JCheckBox cPizza, cBurger, cFries, cSoftDrinks, cTea, cSundae;
+    private JRadioButton rbNone, rb5, rb10, rb15;
     private JButton btnOrder;
+
+    public static void main(String[] args) {
+        FoodOrderGUI frame = new FoodOrderGUI();
+        frame.setContentPane(frame.panel1);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 200);
+        frame.setVisible(true);
+    }
 }
 
 
