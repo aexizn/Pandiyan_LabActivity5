@@ -28,9 +28,6 @@ public class LeapYearGUI extends JFrame {
                 catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Number Format Exception");
                 }
-                catch (NullPointerException ex) {
-                    JOptionPane.showMessageDialog(null, "Null Pointer Exception");
-                }
                 catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Error, Try again");
                 }
