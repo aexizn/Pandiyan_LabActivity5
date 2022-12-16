@@ -70,7 +70,8 @@ public class FoodOrderGUI extends JFrame {
                     //final price
                     double finalPrice = total - (total * discount);
                     JOptionPane.showMessageDialog(null, "The total price is Php " + String.format("%.2f", finalPrice));
-                } catch (Exception error) {
+                }
+                catch (Exception error) {
                     JOptionPane.showMessageDialog(null, "Error: " + error.getMessage());
                 }
 
