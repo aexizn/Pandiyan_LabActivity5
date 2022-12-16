@@ -13,15 +13,26 @@ public class LeapYearGUI extends JFrame {
         btnCheckYear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int year = Integer.parseInt(tfYear.getText());
-                if (year % 4 != 0) {
-                    JOptionPane.showMessageDialog(null, "Not a leap year");
-                } else if (year % 100 != 0) {
-                    JOptionPane.showMessageDialog(null, "Leap year");
-                } else if (year % 400 != 0) {
-                    JOptionPane.showMessageDialog(null, "Not a leap year");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Leap year");
+                try {
+                    int year = Integer.parseInt(tfYear.getText());
+                    if (year % 4 != 0) {
+                        JOptionPane.showMessageDialog(null, "Not a leap year");
+                    } else if (year % 100 != 0) {
+                        JOptionPane.showMessageDialog(null, "Leap year");
+                    } else if (year % 400 != 0) {
+                        JOptionPane.showMessageDialog(null, "Not a leap year");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Leap year");
+                    }
+                }
+                catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Number Format Exception");
+                }
+                catch (NullPointerException ex) {
+                    JOptionPane.showMessageDialog(null, "Null Pointer Exception");
+                }
+                catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error, Try again");
                 }
             }
         });
