@@ -3,6 +3,8 @@ package FoodOrdering;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FoodOrderGUI extends JFrame {
     private JPanel panel1;
@@ -10,17 +12,23 @@ public class FoodOrderGUI extends JFrame {
     private JRadioButton rbNone, rb5, rb10, rb15;
     private JButton btnOrder;
 
+    private List<JRadioButton> bgDiscounts;
+
     public FoodOrderGUI() {
         super("Food Ordering System");
-        setContentPane(panel1);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-
+        bgDiscounts = new ArrayList<>();
+        bgDiscounts.add(rbNone);
+        bgDiscounts.add(rb5);
+        bgDiscounts.add(rb10);
+        bgDiscounts.add(rb15);
+        ButtonGroup bg = new ButtonGroup();
+        for (JRadioButton rb : bgDiscounts) {
+            bg.add(rb);
+        }
         btnOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 double total = 0;
-
                 //price
                 if (cPizza.isSelected()) {
                     total += 100;
@@ -40,27 +48,32 @@ public class FoodOrderGUI extends JFrame {
                 if (cSundae.isSelected()) {
                     total += 40;
                 }
-                if (rb5.isSelected()) {
-                    total += 5;
-                }
-                if (rb10.isSelected()) {
-                    total += 10;
-                }
-                if (rb15.isSelected()) {
-                    total += 15;
-                }
 
                 //discount calculation
-                if (rbNone.isSelected()) {
-                    total += 0;
-                } else if (rb5.isSelected()) {
-                    total = total - (total * 0.05);
-                } else if (rb10.isSelected()) {
-                    total = total - (total * 0.1);
-                } else if (rb15.isSelected()) {
-                    total = total - (total * 0.15);
+                double discount = 0;
+                for (JRadioButton rb : bgDiscounts) {
+                    if (rb.isSelected()) {
+                        if(rb.getText().equals("None")) {
+                            discount = 0;
+                        } else if (rb.getText().equals("5% Off")) {
+                            discount = 0.05;
+                        } else if (rb.getText().equals("10% Off")) {
+                            discount = 0.1;
+                        } else if (rb.getText().equals("15% Off")) {
+                            discount = 0.15;
+                        }
+                        break;
+                    }
                 }
-                JOptionPane.showMessageDialog(null, "The total price is Php " + total);
+
+                try {
+                    //final price
+                    double finalPrice = total - (total * discount);
+                    JOptionPane.showMessageDialog(null, "The total price is Php " + String.format("%.2f", finalPrice));
+                } catch (Exception error) {
+                    JOptionPane.showMessageDialog(null, "Error: " + error.getMessage());
+                }
+
             }
         });
     }
@@ -69,7 +82,7 @@ public class FoodOrderGUI extends JFrame {
         FoodOrderGUI frame = new FoodOrderGUI();
         frame.setContentPane(frame.panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 200);
+        frame.setSize(500, 700);
         frame.setVisible(true);
     }
 }

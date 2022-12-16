@@ -9,4 +9,11 @@ public class SimpleCalcGUI {
     private JButton cbCompute;
     private JTextField tfNumber2;
     private JTextField lblResult;
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("SimpleCalcGUI");
+        frame.setContentPane(new SimpleCalcGUI().panel1);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
 }
