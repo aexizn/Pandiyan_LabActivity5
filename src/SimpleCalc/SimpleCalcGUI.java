@@ -43,17 +43,19 @@ public class SimpleCalcGUI extends JFrame {
                     }
                     lblResult.setText(String.valueOf(result));
 
-                } catch (ArithmeticException ex) {
-                    lblResult.setText("Arithmetic Exception");
+                }
+
+                catch (ArithmeticException ex) {
+                    JOptionPane.showMessageDialog(null,"Arithmetic Exception");
                 }
                 catch (NumberFormatException ex) {
-                    lblResult.setText("Number Format Exception");
+                    JOptionPane.showMessageDialog(null,"Number Format Exception");
                 }
                 catch (NullPointerException ex) {
-                    lblResult.setText("Null Pointer Exception");
+                    JOptionPane.showMessageDialog(null,"Null Pointer Exception");
                 }
                 catch (Exception ex) {
-                    lblResult.setText("Error, Try again");
+                    JOptionPane.showMessageDialog(null,"Error, Try again");
                 }
             }
         });
