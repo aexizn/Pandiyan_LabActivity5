@@ -42,6 +42,7 @@ public class SimpleCalcGUI extends JFrame {
                             break;
                     }
                     lblResult.setText(String.valueOf(result));
+
                 } catch (ArithmeticException ex) {
                     lblResult.setText("Arithmetic Exception");
                 }
