@@ -14,6 +14,7 @@ public class SimpleCalcGUI {
         JFrame frame = new JFrame("SimpleCalcGUI");
         frame.setContentPane(new SimpleCalcGUI().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600,300);
         frame.setVisible(true);
     }
 }
