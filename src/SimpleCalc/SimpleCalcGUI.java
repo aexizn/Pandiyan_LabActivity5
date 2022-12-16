@@ -56,7 +56,6 @@ public class SimpleCalcGUI extends JFrame {
                     lblResult.setText("Error, Try again");
                 }
             }
-
         });
 
 
